@@ -65,9 +65,26 @@ class RestaurantTest {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>ORDER VALUE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     @Test
-    public void get_total_order_value(){
+    public void get_total_order_value_of_menu(){
         List<Item> menu = restaurant.getMenu();
         assertEquals(388, restaurant.getOrderValue(menu));
+    }
+    @Test
+    public void get_total_order_value_of_selected_item(){
+        List<Item> menu = restaurant.getMenu();
+
+        int totalexpected = 0;
+
+        //getting the entire total of the item from menu
+        for(Item item: menu)
+            totalexpected = totalexpected+item.getPrice();
+
+        //total of the items from the menu execpt the first item
+        totalexpected = totalexpected - menu.get(0).getPrice();
+        menu.remove(0);
+
+        assertEquals(totalexpected,restaurant.getOrderValue(menu));
+
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
