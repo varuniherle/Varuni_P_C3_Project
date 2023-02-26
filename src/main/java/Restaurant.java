@@ -61,4 +61,9 @@ public class Restaurant {
         return name;
     }
 
+    public int getOrderValue(List<Item> items){
+        int total_expense = 0;
+        return total_expense;
+    }
+
 }
